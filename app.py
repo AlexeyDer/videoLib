@@ -1,11 +1,20 @@
-from flask import Flask
+from flask import Flask, render_template
+from flask_admin import Admin
 
 app = Flask(__name__)
 
+app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+admin = Admin(app, name='VideoLib', template_mode='bootstrap3')
+
 
 @app.route('/')
-def hello_world():
-    return 'Hello World!'
+def main():
+    return render_template('index.html')
+
+
+@app.route('/showSignUp')
+def showSignUp():
+    return render_template('signup.html')
 
 
 if __name__ == '__main__':
