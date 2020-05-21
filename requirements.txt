@@ -1,4 +1,4 @@
 Flask
 Flask-SQLAlchemy
 Flask-Admin
-mysql-connector-python
+mysql-connector
