@@ -15,6 +15,6 @@ app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 admin = Admin(app, name='VideoLib', template_mode='bootstrap3')
 
 admin.add_view(UserAdmin(User, db.session))
-admin.add_view(FilmInfoAdmin(Film_info, db.session))
+admin.add_view(FilmInfoAdmin(FilmInfo, db.session))
 admin.add_view(GivenAdmin(Given, db.session))
 

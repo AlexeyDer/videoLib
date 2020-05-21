@@ -17,7 +17,7 @@ class UserAdmin(sqla.ModelView):
     form_columns = ['id', 'name', 'address']
 
 
-class Film_info(db.Model):
+class FilmInfo(db.Model):
     __tablename__ = 'film_info'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -29,7 +29,7 @@ class Film_info(db.Model):
     brief_abstract = db.Column(db.String(250))
 
     def __init__(self, *args, **kwargs):
-        super(Film_info, self).__init__(*args, **kwargs)
+        super(FilmInfo, self).__init__(*args, **kwargs)
 
 
 class FilmInfoAdmin(sqla.ModelView):
