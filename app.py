@@ -1,16 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+from flask_sqlalchemy import SQLAlchemy
+
+from config import Configuration
 
 app = Flask(__name__)
+app.config.from_object(Configuration)
+
+db = SQLAlchemy(app)
+from models import *
 
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 admin = Admin(app, name='VideoLib', template_mode='bootstrap3')
 
+admin.add_view(UserAdmin(User, db.session))
+admin.add_view(FilmInfoAdmin(Film_info, db.session))
+admin.add_view(GivenAdmin(Given, db.session))
 
-@app.route('/')
-def main():
-    return render_template('index.html')
-
-
-if __name__ == '__main__':
-    app.run()
