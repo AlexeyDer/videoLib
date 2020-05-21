@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
 from flask_sqlalchemy import SQLAlchemy
 
 from config import Configuration
@@ -17,4 +16,3 @@ admin = Admin(app, name='VideoLib', template_mode='bootstrap3')
 admin.add_view(UserAdmin(User, db.session))
 admin.add_view(FilmInfoAdmin(FilmInfo, db.session))
 admin.add_view(GivenAdmin(Given, db.session))
-
