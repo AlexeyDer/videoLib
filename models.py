@@ -26,7 +26,7 @@ class FilmInfo(db.Model):
     producer = db.Column(db.String(250))
     studio = db.Column(db.String(250))
     actors = db.Column(db.String(250))
-    brief_abstract = db.Column(db.String(250))
+    brief_abstract = db.Column(db.String())
 
     def __init__(self, *args, **kwargs):
         super(FilmInfo, self).__init__(*args, **kwargs)
@@ -35,6 +35,7 @@ class FilmInfo(db.Model):
 class FilmInfoAdmin(sqla.ModelView):
     column_display_pk = True
     form_columns = ['id', 'name', 'genre', 'producer', 'studio', 'actors', 'brief_abstract']
+    column_searchable_list = ['genre', 'actors']
 
 
 class Given(db.Model):
@@ -51,3 +52,5 @@ class Given(db.Model):
 class GivenAdmin(sqla.ModelView):
     column_display_pk = True
     form_columns = ['id', 'name', 'data', 'film']
+    can_export = True
+
