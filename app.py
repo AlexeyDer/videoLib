@@ -1,7 +1,5 @@
-import subprocess
-
 from fpdf import FPDF
-from flask import Flask, render_template, redirect, Response
+from flask import Flask, render_template, redirect, Response, request
 from flask_admin import Admin
 from flask_sqlalchemy import SQLAlchemy
 from config import Configuration
@@ -16,18 +14,43 @@ def main():
     return redirect("/admin")
 
 
+@app.route('/message', methods=['GET', 'POST'])
+def message():
+    if request.method == 'POST':
+        name = request.form.get('name')  # запрос к данным формы
+        address = request.form.get('address')
+        data = request.form.get('data')
+        print(name, data, address)
+
+        if os.path.exists("message.txt"):
+            os.remove("message.txt")
+        else:
+            print("The file does not exist")
+
+        f = open("message.txt", "a+")
+        f.write("{:>75}".format(name) + "\n")
+        f.write("{:>75}".format(address) + "\n")
+
+        f.write("{:>50}".format("Уважаемый Иван Иванович!\n"))
+        f.write(
+            "Убедительно прошу Вас сообщить будете ли и впредь пользоваться\nуслугами нашей видеотеки, поскольку в последний раз Вы посещали\nнас с ")
+
+        f.write(data + "\n")
+        f.write("{:>75}".format("Заранее спасибо\n"))
+        f.write("{:>75}".format("Подпись\n"))
+        f.write("{:>75}".format("Дата"))
+
+        f.close()
+
+    return render_template('message.html')
+
+
 db = SQLAlchemy(app)
 from models import *
 
 
 @app.route('/download/report/pdf')
 def download_report():
-    result = {
-        'id',
-        'name',
-        'data',
-        'film'
-    }
     result = []
     for instance in db.session.query(Given).order_by(Given.id):
         result.append({
@@ -55,10 +78,10 @@ def download_report():
     th = pdf.font_size
 
     for row in result:
-        pdf.cell(col_width - 30, th, str(row['id']), border=1)
+        pdf.cell(col_width - 35, th, str(row['id']), border=1)
         pdf.cell(col_width + 20, th, row['name'], border=1)
         pdf.cell(col_width, th, row['data'], border=1)
-        pdf.cell(col_width, th, row['film'], border=1)
+        pdf.cell(col_width + 20, th, row['film'], border=1)
         pdf.ln(th)
 
     pdf.ln(10)
@@ -68,6 +91,13 @@ def download_report():
 
     pdf.output('list_debtors.pdf', 'F')
 
+    # import subprocess
+    # lpr = subprocess.Popen("/usr/bin/lpr", stdin=subprocess.PIPE)
+    # lpr.stdin.write("list_debtors.pdf")
+
+    # import os, tempfile
+    # filename = tempfile.mkdtemp('list_debtors.pdf')
+    # os.startfile(filename, 'print')
     # subprocess.call(["xdg-open", 'list_debtors.pdf'])
 
     return Response(pdf.output(dest='S').encode('latin-1'), mimetype='application/pdf',
