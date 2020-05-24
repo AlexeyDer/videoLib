@@ -1,4 +1,5 @@
 from flask_admin.contrib import sqla
+
 from app import db
 
 
@@ -44,6 +45,8 @@ class Given(db.Model):
     name = db.Column(db.String(250))
     data = db.Column(db.String(250))
     film = db.Column(db.String(250))
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    # user = db.relationship('User', backref=db.backref('given', lazy='dynamic'))
 
     def __init__(self, *args, **kwargs):
         super(Given, self).__init__(*args, **kwargs)
@@ -53,4 +56,3 @@ class GivenAdmin(sqla.ModelView):
     column_display_pk = True
     form_columns = ['id', 'name', 'data', 'film']
     can_export = True
-
