@@ -21,12 +21,5 @@ export FLASK_APP=main.py
 flask run
 ```
 
-If it not work try this
-
-```sh
-source venv/bin/activate
-flask run
-```
-
 
 After this step, you can view your badge on http://127.0.0.1:5000/
