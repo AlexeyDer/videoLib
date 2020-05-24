@@ -1,4 +1,6 @@
 ## VideoLib 
+![Image](https://2.bp.blogspot.com/-lHldOTZaVDY/VwgyVX433zI/AAAAAAAAAFo/LU64Kzxc9yITH2AnmNsydFm7WPug5TitA/s1600/flaskMySql.jpeg)
+![Image](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgb3aQO8jjXhwH1vs0l0kOWv-ZawfM3awKsUV6t7-Oi7tABkOf&usqp=CAU)
 
 This is example of Flask web-application which use Flask_Admin Panel for work with mysql using ORM SqlAlchemy.
 
@@ -18,6 +20,13 @@ To run the server, you must set the FLASK_APP environment variable before runnin
 
 ```sh
 export FLASK_APP=main.py
+flask run
+```
+
+If it not work try this
+
+```sh
+source venv/bin/activate
 flask run
 ```
 
