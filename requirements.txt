@@ -1,4 +1,8 @@
+admin
 Flask
-Flask-SQLAlchemy
 Flask-Admin
+Flask-SQLAlchemy
+fpdf
 mysql-connector
+SQLAlchemy
+
