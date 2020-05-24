@@ -1,4 +1,3 @@
-admin
 Flask
 Flask-Admin
 Flask-SQLAlchemy
