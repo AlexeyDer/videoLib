@@ -1,7 +1,7 @@
 ## VideoLib 
 ![Image](https://miro.medium.com/max/640/1*XzIRJGujfqAiOV2EIQgR_Q.png)
 ![Image](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRgb3aQO8jjXhwH1vs0l0kOWv-ZawfM3awKsUV6t7-Oi7tABkOf&usqp=CAU)
-![Image](https://lh3.googleusercontent.com/proxy/ND4ei_7bTzcEnQFeOrT4c1qGA0DGvz1ATjG9ehRIb-XKtXYrSnFE2WfiPMiGars5zgilX6lXr0_QAWR_ZTYhD5Y4zgmimY_cPqD0uLJySYPdDv6KK1uHEg)
+![Image](https://upload.wikimedia.org/wikipedia/ru/d/d3/Mysql.png)
 
 This is example of Flask web-application which use Flask_Admin Panel for work with mysql using ORM SqlAlchemy.
 
